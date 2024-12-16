@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const addUser=createAsyncThunk("counter/addUser",async(userData)=>{
     try{
-            const response=await axios.post("http://127.0.0.1:8080/insertUser",{
+            const response=await axios.post("https://fsp-server.onrender.com/insertUser",{
                 uname:userData.uname,
                 password:userData.password,
                 email:userData.email,
@@ -21,7 +21,7 @@ export const addUser=createAsyncThunk("counter/addUser",async(userData)=>{
 // update password:
 export const updateUser = createAsyncThunk('counter/updateUser', async (userData) => {
   try {
-    const response = await axios.put('http://127.0.0.1:8080/updateUser', {
+    const response = await axios.put('https://fsp-server.onrender.com/updateUser', {
       uname: userData.uname,
       password: userData.password,
       email: userData.email,
@@ -38,7 +38,7 @@ export const updateUser = createAsyncThunk('counter/updateUser', async (userData
 // get user
 export const getUser = createAsyncThunk("counter/getUser", async (userData) => {
   try {
-      const response = await axios.post("http://127.0.0.1:8080/login", {
+      const response = await axios.post("https://fsp-server.onrender.com/login", {
           password: userData.password,
           email: userData.email,
       });
@@ -54,7 +54,7 @@ export const getUser = createAsyncThunk("counter/getUser", async (userData) => {
 // logout
 export const logout = createAsyncThunk("counter/logout", async () => {
     try {
-      const response = await axios.post("http://127.0.0.1:8080/logout");
+      const response = await axios.post("https://fsp-server.onrender.com/logout");
       return response.data;
     } catch (error) {
       console.log(error);

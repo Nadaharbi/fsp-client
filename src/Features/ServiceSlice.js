@@ -5,7 +5,7 @@ import axios from 'axios';
 export const addService = createAsyncThunk("services/addService",
   async (serviceData, { rejectWithValue }) => {
     try {
-      const response = await axios.post("http://127.0.0.1:8080/addService", {
+      const response = await axios.post("https://fsp-server.onrender.com/addService", {
         mobileNumber: serviceData.mobileNumber,
         stationName: serviceData.stationName,
         lat:serviceData.lat,
@@ -23,7 +23,7 @@ export const getService = createAsyncThunk(
   "services/getService",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://127.0.0.1:8080/getService");
+      const response = await axios.get("https://fsp-server.onrender.com/getService");
       return response.data; 
     } catch (error) {
       console.error("Get Service Error: ", error);
@@ -36,7 +36,7 @@ export const deleteService = createAsyncThunk(
   "services/deleteService",
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(`http://127.0.0.1:8080/deleteService/${id}`);
+      const response = await axios.delete(`https://fsp-server.onrender.com/deleteService/${id}`);
       return id; 
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to delete service.");
@@ -49,7 +49,7 @@ export const updateService = createAsyncThunk(
   "services/updateService",
   async ({ id, updatedData }, { rejectWithValue }) => {
     try {
-      const response = await axios.put(`http://127.0.0.1:8080/updateService/${id}`, updatedData);
+      const response = await axios.put(`https://fsp-server.onrender.com/updateService/${id}`, updatedData);
       return response.data.service;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to update service.");
